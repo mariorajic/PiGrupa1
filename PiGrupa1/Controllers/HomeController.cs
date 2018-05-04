@@ -14,6 +14,11 @@ namespace PiGrupa1.Controllers
             return View();
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

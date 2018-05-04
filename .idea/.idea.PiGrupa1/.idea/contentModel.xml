@@ -25,6 +25,7 @@
             <e p="fontawesome.css" t="Include" />
             <e p="fontawesome.min.css" t="Include" />
           </e>
+          <e p="form.css" t="Include" />
           <e p="site.css" t="Include" />
           <e p="webfonts" t="Include">
             <e p="fa-regular-400.eot" t="Include" />
@@ -63,6 +64,7 @@
             <e p="About.cshtml" t="Include" />
             <e p="Contact.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="Register.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
             <e p="Error.cshtml" t="Include" />
