@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Mvc.Ajax;
+﻿using System.Web.Mvc;
 
 namespace PiGrupa1.Controllers
 {
@@ -11,6 +6,10 @@ namespace PiGrupa1.Controllers
     {
         public ActionResult Index()
         {
+            DatabaseController dbCtrl = new DatabaseController();
+            dbCtrl.getConnection();
+            dbCtrl.executeQuery("INSERT INTO zadruge(id, ime) VALUES(2, 'mala zadruga')");
+            
             return View("Index");
         }
 
