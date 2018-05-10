@@ -55,6 +55,12 @@ a:hover {
 .pi-form label {
     margin-bottom: 0;
 }
+.pi-form .form-control {
+    border: none;
+    border-radius: 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
 
 .pi-form button{
     width: 100%;
