@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Data.SqlClient;
+using System.Runtime.InteropServices;
+using System.Web.Mvc;
 
 namespace PiGrupa1.Controllers
 {
@@ -7,8 +9,7 @@ namespace PiGrupa1.Controllers
         // GET
         public ActionResult CreateFarm()
         {
-            return
-            View();
+            return View();
         }
     }
 }
