@@ -11,12 +11,12 @@ namespace PiGrupa1.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         public ActionResult Register()
         {
-            return View();
+            return View("Register");
         }
 
         public ActionResult About()

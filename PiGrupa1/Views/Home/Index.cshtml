@@ -17,7 +17,9 @@
       <button type="submit" class="my-3">Prijava</button>
       <div class="form-links d-flex justify-content-between my-3">
         <a href="#">Zaboravili ste lozinku?</a>
-        <a href="#">Registracija</a>
+        <a href="@Url.Action("Register", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)">
+          <span>Registracija</span>
+        </a>
       </div>
     </form>
   </div>
