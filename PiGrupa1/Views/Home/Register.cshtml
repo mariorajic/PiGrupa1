@@ -7,34 +7,38 @@
 
 <div class="row flex-center">
     <div class="col-12 col-lg-6 row flex-center flex-column">
+        @if (ViewBag.Message != null)
+        {
+            <h6 class="font-italic mb-5">@ViewBag.Message</h6>                
+        }
         <h3 class="text-center">Sustav za poljoprivredna gospodarstva</h3>
         @{
-            using (Html.BeginForm("Register", "Home", FormMethod.Post,new { @class="pi-form my-4 col-10 col-lg-6"}))
+            using (Html.BeginForm("Register", "Home", FormMethod.Post, new {@class = "pi-form my-4 col-10 col-lg-6"}))
             {
                 @Html.AntiForgeryToken()
-                    
+
                 <div class="form-group row my-3">
-                    @Html.ValidationSummary(true, "", new { @class="text-danger"})
+                    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
                     <label class="col-2 flex-center"><i class="fa fa-user"></i></label>
-                    @Html.TextBoxFor(u => u.Ime, new { placeholder = "Unesite ime", @class = "form-control col-10",required="required"})
+                    @Html.TextBoxFor(u => u.Ime, new {placeholder = "Unesite ime", @class = "form-control col-10", required = "required"})
                     @Html.ValidationMessageFor(u => u.Ime)
-                        
+
                 </div>
                 <div class="form-group row my-3">
                     <label class="col-2 flex-center"><i class="fa fa-user"></i></label>
-                    @Html.TextBoxFor(u => u.Prezime, new {placeholder="Unesite prezime", @class = "form-control col-10",required="required"})
+                    @Html.TextBoxFor(u => u.Prezime, new {placeholder = "Unesite prezime", @class = "form-control col-10", required = "required"})
                 </div>
                 <div class="form-group row my-3">
                     <label class="col-2 flex-center"><i class="fa fa-envelope"></i></label>
-                    @Html.TextBoxFor(u => u.Email, new {type="email", placeholder="Unesite email", @class = "form-control col-10",required="required"})                   
+                    @Html.TextBoxFor(u => u.Email, new {type = "email", placeholder = "Unesite email", @class = "form-control col-10", required = "required"})
                 </div>
                 <div class="form-group row my-3">
                     <label class="col-2 flex-center"><i class="fa fa-phone"></i></label>
-                    @Html.TextBoxFor(u => u.Kontakt, new {placeholder="Unesite broj telefona", @class = "form-control col-10",required="required"}) 
+                    @Html.TextBoxFor(u => u.Kontakt, new {placeholder = "Unesite broj telefona", @class = "form-control col-10", required = "required"})
                 </div>
                 <div class="form-group row my-3">
                     <label class="col-2 flex-center"><i class="fa fa-lock"></i></label>
-                    @Html.PasswordFor(u => u.Lozinka, new {placeholder="Unesite lozinku", @class = "form-control col-10",required="required"})
+                    @Html.PasswordFor(u => u.Lozinka, new {placeholder = "Unesite lozinku", @class = "form-control col-10", required = "required"})
                 </div>
                 <button type="submit" class="my-3">Registracija</button>
                 <div class="form-links d-flex justify-content-between my-3">

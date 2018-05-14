@@ -61,26 +61,36 @@ namespace PiGrupa1.Controllers
         [HttpPost]
         public ActionResult Register(Gospodarstvo add)
         {
-            
             DatabaseController dbCtrl = new DatabaseController();
             dbCtrl.getConnection();
-            //AddGospodarstva obj = new AddGospodarstva();
             string s1 =
                 "Insert into [dbo].[gospodarstva] (ime,prezime,kontakt,email,lozinka) values (@Ime,@Prezime,@Kontakt,@Email,@Lozinka)";
-            SqlCommand sqlcomm = new SqlCommand(s1);
-            sqlcomm.Parameters.AddWithValue("@Ime", add.Ime);
-            sqlcomm.Parameters.AddWithValue("@Prezime", add.Prezime);
-            sqlcomm.Parameters.AddWithValue("@Kontakt", add.Kontakt);
-            sqlcomm.Parameters.AddWithValue("@Email", add.Email);
-            sqlcomm.Parameters.AddWithValue("@Lozinka", add.Lozinka);
-            
-            dbCtrl.executeCommand(sqlcomm);
-            ViewBag.Message = "Uspješno ste se registrirali. Možete se prijaviti.";
-            /*if(!ModelState.IsValid)
+            string s2 = "Select * from [dbo].[gospodarstva] where email=@Email";
+            SqlCommand sql = new SqlCommand(s2);
+            sql.Parameters.AddWithValue("@Email", add.Email);
+            SqlDataReader sdr = dbCtrl.executeSdr(sql);
+            if (sdr.Read())
             {
-                return View(add);
-            }*/
-            return View("Index");
+                ViewBag.Message = "Taj email je vec zauzet";
+                return View();     
+            }
+            else
+            {
+                sdr.Close();
+                SqlCommand sqlcomm = new SqlCommand(s1);
+                sqlcomm.Parameters.AddWithValue("@Ime", add.Ime);
+                sqlcomm.Parameters.AddWithValue("@Prezime", add.Prezime);
+                sqlcomm.Parameters.AddWithValue("@Kontakt", add.Kontakt);
+                sqlcomm.Parameters.AddWithValue("@Email", add.Email);
+                sqlcomm.Parameters.AddWithValue("@Lozinka", add.Lozinka);
+                dbCtrl.executeCommand(sqlcomm);
+                ViewBag.Message = "Uspješno ste se registrirali. Možete se prijaviti.";
+                /*if(!ModelState.IsValid)
+                {
+                    return View(add);
+                }*/
+                return View("Index");
+            }
         }
 
         public ActionResult About()
