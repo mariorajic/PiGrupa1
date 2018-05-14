@@ -90,6 +90,11 @@
     <Compile Include="Global.asax.cs" />
     <Compile Include="Models\Gospodarstvo.cs" />
     <Compile Include="Models\Farm.cs" />
+    <Compile Include="Models\Grad.cs" />
+    <Compile Include="Models\Oranica.cs" />
+    <Compile Include="Models\Parcela.cs" />
+    <Compile Include="Models\Trosak.cs" />
+    <Compile Include="Models\Zadruga.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
