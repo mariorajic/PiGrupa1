@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using PiGrupa1.Models;
 
 namespace PiGrupa1.Controllers
 {
@@ -7,8 +8,8 @@ namespace PiGrupa1.Controllers
         public ActionResult Index()
         {
             DatabaseController dbCtrl = new DatabaseController();
-            dbCtrl.getConnection();
-            dbCtrl.executeQuery("INSERT INTO zadruge(id, ime) VALUES(2, 'mala zadruga')");
+            //dbCtrl.getConnection();
+           // dbCtrl.executeQuery("INSERT INTO zadruge(id, ime) VALUES(2, 'mala zadruga')");
             
             return View("Index");
         }
@@ -16,6 +17,11 @@ namespace PiGrupa1.Controllers
         public ActionResult Register()
         {
             return View("Register");
+        }
+        [HttpPost]
+        public ActionResult Register(Gospodarstvo add)
+        {
+            
         }
 
         public ActionResult About()

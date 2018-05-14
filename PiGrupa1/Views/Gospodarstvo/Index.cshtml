@@ -1,0 +1,48 @@
+﻿@model PiGrupa1.Models.Gospodarstvo
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+    <center>
+        
+        @using (Html.BeginForm("Index", "Gospodarstvo", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td>Ime:</td>
+                    <td>
+                        <td>@Html.TextBoxFor(u => u.Prezime)</td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Prezime:</td>
+                    <td>@Html.TextBoxFor(u => u.Prezime)</td>
+                </tr>
+                <tr>
+                    <td>Kontakt:</td>
+                    <td>@Html.TextBoxFor(u => u.Kontakt)</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>@Html.TextBoxFor(u => u.Email)</td>
+                </tr>
+                <tr>
+                    <td>Lozinka:</td>
+                    <td>@Html.PasswordFor(u => u.Lozinka)</td>
+                </tr>
+                <td> <input type="submit" value="Registriraj se"/> </td>
+            </table>
+        }
+    </center>    
+</div>
+</body>
+</html>
