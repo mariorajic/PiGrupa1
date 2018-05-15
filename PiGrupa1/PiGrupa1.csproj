@@ -88,6 +88,7 @@
     <Compile Include="Controllers\FarmController.cs" />
     <Compile Include="Controllers\GospodarstvoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ParcelaController.cs" />
     <Compile Include="Controllers\TableController.cs" />
     <Compile Include="Global.asax.cs" />
     <Compile Include="Models\Berba.cs" />
@@ -169,6 +170,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Parcela\CreateParcela.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Table\Table.cshtml" />
