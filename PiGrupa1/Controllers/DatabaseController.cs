@@ -10,7 +10,7 @@ namespace PiGrupa1.Controllers
 
         public void getConnection()
         {
-            conn = new SqlConnection("Server=rppp.fer.hr,3000;Database=PI-01;User Id=pi01;Password=zvucnik+1");
+            conn = new SqlConnection("Server=rppp.fer.hr,3000;Database=PI-10;User Id=pi10;Password=Z-N-A-L-A-C");
             conn.Open();
         }
      
@@ -18,6 +18,18 @@ namespace PiGrupa1.Controllers
         {
             SqlCommand command = new SqlCommand(query, conn);
             command.ExecuteNonQuery();
+        }
+
+        public void executeCommand(SqlCommand sqlcomm)
+        {
+            sqlcomm.Connection = conn;
+            sqlcomm.ExecuteNonQuery();
+        }
+
+        public SqlDataReader executeSdr(SqlCommand sqlcomm)
+        {
+            sqlcomm.Connection = conn;
+            return sqlcomm.ExecuteReader();
         }
     }
 }
