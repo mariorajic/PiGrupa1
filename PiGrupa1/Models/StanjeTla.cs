@@ -1,9 +1,9 @@
 ﻿namespace PiGrupa1.Models
 {
-    public class Grad
+    public class StanjeTla
     {
-        
         public int Id { get; set; }
-        public string Ime { get; set; }
+        public string Stanje { get; set; }
+       
     }
 }

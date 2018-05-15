@@ -6,9 +6,11 @@ namespace PiGrupa1.Models
     public class Trosak
     {
         
-        public int id { get; set; }
-        public string naziv { get; set; }
-        public DateTime datum { get; set; }
+        public int Id { get; set; }
+        public string Naziv { get; set; }
+        public DateTime Datum { get; set; }
+        public int VrijednostTroska { get; set; }
+        public int IdParcele { get; set; }
         
     }
 }

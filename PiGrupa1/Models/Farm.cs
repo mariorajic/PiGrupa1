@@ -2,9 +2,9 @@
 {
     public class Farm
     {
-        public int id { get; set; }
-        public string id_parcele { get; set; }
-        public string naziv { get; set; }
+        public int Id { get; set; }
+        public string IdParcele { get; set; }
+        public string Naziv { get; set; }
             
     }
 }

@@ -3,7 +3,7 @@
     public class Zadruga
     {
         
-        public int id { get; set; }
-        public string ime { get; set; }
+        public int Id { get; set; }
+        public string Ime { get; set; }
     }
 }

@@ -3,11 +3,11 @@
     public class Oranica
     {
         
-        public int id { get; set; }
-        public int id_parcele { get; set; }
-        public string naziv { get; set; }
-        public string dimenzije { get; set; }
-        public int stanje_tla { get; set; }
-        public int vrsta_tla { get; set; }
+        public int Id { get; set; }
+        public int IdParcele { get; set; }
+        public string Naziv { get; set; }
+        public string Dimenzije { get; set; }
+        public int StanjeTla { get; set; }
+        public int VrstaTla { get; set; }
     }
 }

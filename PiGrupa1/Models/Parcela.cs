@@ -2,11 +2,11 @@
 {
     public class Parcela
     {
-        public int id { get; set; }
-        public int id_korisnika { get; set; }
-        public string koordinate { get; set; }
-        public int dimenzije { get; set; }
-        public int id_grada { get; set; }
-        public string lokacija { get; set; }
+        public int Id { get; set; }
+        public int IdKorisnika { get; set; }
+        public string Koordinate { get; set; }
+        public int Dimenzije { get; set; }
+        public int IdGrada { get; set; }
+        public string Lokacija { get; set; }
     }
 }
