@@ -89,7 +89,9 @@
     <Compile Include="Controllers\GospodarstvoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParcelaController.cs" />
+    <Compile Include="Controllers\SadnjaController.cs" />
     <Compile Include="Controllers\TableController.cs" />
+    <Compile Include="Controllers\ZivotinjeController.cs" />
     <Compile Include="Global.asax.cs" />
     <Compile Include="Models\Berba.cs" />
     <Compile Include="Models\Biljka.cs" />
@@ -138,6 +140,7 @@
     <Content Include="Content\site.css" />
     <Content Include="Content\Tables.css" />
     <Content Include="favicon.ico" />
+    <Content Include="favicon.png" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -154,6 +157,8 @@
     <Content Include="Content\webfonts\fa-solid-900.woff" />
     <Content Include="Content\webfonts\fa-solid-900.woff2" />
     <Content Include="Global.asax" />
+    <Content Include="logo.png" />
+    <Content Include="logo2.png" />
     <Content Include="packages.config" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -171,10 +176,12 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Parcela\CreateParcela.cshtml" />
+    <Content Include="Views\Sadnja\CreateSadnja.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Table\Table.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Zivotinje\CreateZivotinje.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
