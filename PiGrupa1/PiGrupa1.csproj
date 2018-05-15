@@ -89,8 +89,32 @@
     <Compile Include="Controllers\GospodarstvoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs" />
+    <Compile Include="Models\Berba.cs" />
+    <Compile Include="Models\Biljka.cs" />
     <Compile Include="Models\Gospodarstvo.cs" />
     <Compile Include="Models\Farm.cs" />
+    <Compile Include="Models\Grad.cs" />
+    <Compile Include="Models\Mljekomat.cs" />
+    <Compile Include="Models\Oranica.cs" />
+    <Compile Include="Models\Parcela.cs" />
+    <Compile Include="Models\ProdajaBiljaka.cs" />
+    <Compile Include="Models\ProdajaSirovine.cs" />
+    <Compile Include="Models\PunjenjeMljekomata.cs" />
+    <Compile Include="Models\RadnjaOranice.cs" />
+    <Compile Include="Models\RadnjaStroja.cs" />
+    <Compile Include="Models\Sadnja.cs" />
+    <Compile Include="Models\ServisMljekomata.cs" />
+    <Compile Include="Models\Sezona.cs" />
+    <Compile Include="Models\Sirovina.cs" />
+    <Compile Include="Models\StanjeTla.cs" />
+    <Compile Include="Models\StatusZivotinje.cs" />
+    <Compile Include="Models\Stroj.cs" />
+    <Compile Include="Models\TipRadnjeOranice.cs" />
+    <Compile Include="Models\TipRadnjeStroja.cs" />
+    <Compile Include="Models\Trosak.cs" />
+    <Compile Include="Models\VrstaTla.cs" />
+    <Compile Include="Models\Zadruga.cs" />
+    <Compile Include="Models\Zivotinja.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
