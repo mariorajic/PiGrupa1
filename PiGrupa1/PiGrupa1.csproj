@@ -88,6 +88,7 @@
     <Compile Include="Controllers\FarmController.cs" />
     <Compile Include="Controllers\GospodarstvoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TableController.cs" />
     <Compile Include="Global.asax.cs" />
     <Compile Include="Models\Berba.cs" />
     <Compile Include="Models\Biljka.cs" />
@@ -134,6 +135,7 @@
     <Content Include="Content\fa\fa-brands.min.css" />
     <Content Include="Content\form.css" />
     <Content Include="Content\site.css" />
+    <Content Include="Content\Tables.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -169,6 +171,7 @@
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Table\Table.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Web.config" />

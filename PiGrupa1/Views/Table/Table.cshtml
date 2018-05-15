@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "Table";
+}
+
+<link rel="stylesheet" type="text/css" href="/Content/Tables.css">
+
+<script type="text/javascript">
+    function openTable(evt, tableName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tableName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+<div class="row flex-center">
+    <div class="col-12 col-lg-6 row flex-center flex-column">
+            <img src="../../logo2.png" alt="Sustav za poljoprivredna gospodarstva">
+
+        <div class="tab">
+            <button class="tablinks" onclick="openTable(event, 'Parcele')">Parcele</button>
+            <button class="tablinks" onclick="openTable(event, 'Strojevi')">Strojevi</button>
+            <button class="tablinks" onclick="openTable(event, 'Mljekomati')">Mljekomati</button>
+        </div>
+
+        <div id="Parcele" class="tabcontent">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Parcela</th>
+                    <th>Lokacija</th>
+                    <th>Tip</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Ševaš njive</td>
+                    <td>Neđe dole</td>
+                    <td>Oranica</td>
+                </tr>
+                <tr>
+                    <td>Goranački tor</td>
+                    <td>Iznad Mostara</td>
+                    <td>Farma</td>
+                </tr>
+                <tr>
+                    <td>Ostojića ledina</td>
+                    <td>3PM</td>
+                    <td>Oranica</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="Strojevi" class="tabcontent">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Vrsta</th>
+                    <th>Parcela</th>
+                    <th>Vrijednost</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Ševaš njive</td>
+                    <td>Neđe dole</td>
+                    <td>Oranica</td>
+                </tr>
+                <tr>
+                    <td>Goranački tor</td>
+                    <td>Iznad Mostara</td>
+                    <td>Farma</td>
+                </tr>
+                <tr>
+                    <td>Ostojića ledina</td>
+                    <td>3PM</td>
+                    <td>Oranica</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="Mljekomati" class="tabcontent">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Naziv</th>
+                    <th>Lokacija</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Ševaš njive</td>
+                    <td>Neđe dole</td>
+                    <td>Oranica</td>
+                </tr>
+                <tr>
+                    <td>Goranački tor</td>
+                    <td>Iznad Mostara</td>
+                    <td>Farma</td>
+                </tr>
+                <tr>
+                    <td>Ostojića ledina</td>
+                    <td>3PM</td>
+                    <td>Oranica</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>
