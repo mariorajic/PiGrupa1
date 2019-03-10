@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 24, 2018 at 12:29 PM
--- Server version: 10.1.30-MariaDB-0ubuntu0.17.10.1
+-- Generation Time: Apr 19, 2018 at 06:36 PM
+-- Server version: 5.7.21-0ubuntu0.17.10.1
 -- PHP Version: 7.2.4-1+ubuntu17.10.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -30,8 +30,7 @@ CREATE TABLE `berbe` (
   `id` int(11) NOT NULL,
   `id_sadnje` int(11) NOT NULL,
   `datum` date NOT NULL,
-  `kolicina` int(11) NOT NULL,
-  `sezona` int(11) NOT NULL
+  `kolicina` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -60,27 +59,26 @@ CREATE TABLE `farme` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gospodarstva`
---
-
-CREATE TABLE `gospodarstva` (
-  `id` int(11) NOT NULL,
-  `ime` varchar(255) NOT NULL,
-  `prezime` varchar(255) NOT NULL,
-  `kontakt` varchar(255) NOT NULL,
-  `id_zadruge` int(11) DEFAULT NULL,
-  `email` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `gradovi`
 --
 
 CREATE TABLE `gradovi` (
   `id` int(11) NOT NULL,
   `ime` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `korisnici`
+--
+
+CREATE TABLE `korisnici` (
+  `id` int(11) NOT NULL,
+  `ime` varchar(255) NOT NULL,
+  `prezime` varchar(255) NOT NULL,
+  `kontakt` varchar(255) NOT NULL,
+  `id_zadruge` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -106,9 +104,11 @@ CREATE TABLE `oranice` (
   `id` int(11) NOT NULL,
   `id_parcele` int(11) NOT NULL,
   `naziv` varchar(255) NOT NULL,
+  `lokacija` varchar(255) NOT NULL,
+  `koordinate` varchar(255) NOT NULL,
   `dimenzije` varchar(255) NOT NULL,
-  `stanje_tla` int(11) NOT NULL,
-  `vrsta_tla` int(11) NOT NULL
+  `tlo` varchar(255) NOT NULL,
+  `tip_parcele` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -122,8 +122,7 @@ CREATE TABLE `parcele` (
   `id_korisnika` int(11) NOT NULL,
   `koordinate` varchar(255) NOT NULL,
   `dimenzije` int(11) NOT NULL,
-  `id_grada` int(11) NOT NULL,
-  `lokacija` varchar(255) NOT NULL
+  `id_grada` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -209,8 +208,7 @@ CREATE TABLE `sadnje` (
   `id_oranice` int(11) NOT NULL,
   `datum` date NOT NULL,
   `kolicina` int(11) NOT NULL,
-  `troskovi` int(11) NOT NULL,
-  `sezona` int(11) NOT NULL
+  `troskovi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -229,17 +227,6 @@ CREATE TABLE `servisi_mljekomata` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sezone`
---
-
-CREATE TABLE `sezone` (
-  `id` int(11) NOT NULL,
-  `sezona` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `sirovine`
 --
 
@@ -250,17 +237,6 @@ CREATE TABLE `sirovine` (
   `datum` date NOT NULL,
   `kolicina` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `stanja_tla`
---
-
-CREATE TABLE `stanja_tla` (
-  `id` int(11) NOT NULL,
-  `stanje` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -327,17 +303,6 @@ CREATE TABLE `troskovi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vrste_tla`
---
-
-CREATE TABLE `vrste_tla` (
-  `id` int(11) NOT NULL,
-  `vrsta` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `zadruge`
 --
 
@@ -371,8 +336,7 @@ CREATE TABLE `zivotinje` (
 --
 ALTER TABLE `berbe`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_sadnje` (`id_sadnje`),
-  ADD KEY `sezona` (`sezona`);
+  ADD KEY `id_sadnje` (`id_sadnje`);
 
 --
 -- Indexes for table `biljke`
@@ -388,17 +352,17 @@ ALTER TABLE `farme`
   ADD KEY `id_korisnika` (`id_parcele`);
 
 --
--- Indexes for table `gospodarstva`
---
-ALTER TABLE `gospodarstva`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_zadruge` (`id_zadruge`);
-
---
 -- Indexes for table `gradovi`
 --
 ALTER TABLE `gradovi`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `korisnici`
+--
+ALTER TABLE `korisnici`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_zadruge` (`id_zadruge`);
 
 --
 -- Indexes for table `mljekomati`
@@ -412,9 +376,8 @@ ALTER TABLE `mljekomati`
 --
 ALTER TABLE `oranice`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_korisnika` (`id_parcele`),
-  ADD KEY `stanje_tla` (`stanje_tla`),
-  ADD KEY `vrsta_tla` (`vrsta_tla`);
+  ADD KEY `tip_parcele` (`tip_parcele`),
+  ADD KEY `id_korisnika` (`id_parcele`);
 
 --
 -- Indexes for table `parcele`
@@ -467,8 +430,7 @@ ALTER TABLE `radnje_stroja`
 ALTER TABLE `sadnje`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_parcele` (`id_oranice`),
-  ADD KEY `biljka` (`biljka`),
-  ADD KEY `sezona` (`sezona`);
+  ADD KEY `biljka` (`biljka`);
 
 --
 -- Indexes for table `servisi_mljekomata`
@@ -478,23 +440,11 @@ ALTER TABLE `servisi_mljekomata`
   ADD KEY `id_mljekomata` (`id_mljekomata`);
 
 --
--- Indexes for table `sezone`
---
-ALTER TABLE `sezone`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `sirovine`
 --
 ALTER TABLE `sirovine`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_zivotinje` (`id_zivotinje`);
-
---
--- Indexes for table `stanja_tla`
---
-ALTER TABLE `stanja_tla`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `status_zivotinje`
@@ -527,12 +477,6 @@ ALTER TABLE `tip_radnje_stroja`
 ALTER TABLE `troskovi`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_parcele` (`id_parcele`);
-
---
--- Indexes for table `vrste_tla`
---
-ALTER TABLE `vrste_tla`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `zadruge`
@@ -568,14 +512,14 @@ ALTER TABLE `biljke`
 ALTER TABLE `farme`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `gospodarstva`
---
-ALTER TABLE `gospodarstva`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `gradovi`
 --
 ALTER TABLE `gradovi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `korisnici`
+--
+ALTER TABLE `korisnici`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mljekomati`
@@ -628,19 +572,9 @@ ALTER TABLE `sadnje`
 ALTER TABLE `servisi_mljekomata`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `sezone`
---
-ALTER TABLE `sezone`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `sirovine`
 --
 ALTER TABLE `sirovine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `stanja_tla`
---
-ALTER TABLE `stanja_tla`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `status_zivotinje`
@@ -663,11 +597,6 @@ ALTER TABLE `tip_radnje_oranice`
 ALTER TABLE `troskovi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `vrste_tla`
---
-ALTER TABLE `vrste_tla`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `zadruge`
 --
 ALTER TABLE `zadruge`
@@ -685,8 +614,7 @@ ALTER TABLE `zivotinje`
 -- Constraints for table `berbe`
 --
 ALTER TABLE `berbe`
-  ADD CONSTRAINT `berbe_ibfk_1` FOREIGN KEY (`id_sadnje`) REFERENCES `sadnje` (`id`),
-  ADD CONSTRAINT `berbe_ibfk_2` FOREIGN KEY (`sezona`) REFERENCES `sezone` (`id`);
+  ADD CONSTRAINT `berbe_ibfk_1` FOREIGN KEY (`id_sadnje`) REFERENCES `sadnje` (`id`);
 
 --
 -- Constraints for table `farme`
@@ -695,30 +623,28 @@ ALTER TABLE `farme`
   ADD CONSTRAINT `farme_ibfk_1` FOREIGN KEY (`id_parcele`) REFERENCES `parcele` (`id`);
 
 --
--- Constraints for table `gospodarstva`
+-- Constraints for table `korisnici`
 --
-ALTER TABLE `gospodarstva`
-  ADD CONSTRAINT `gospodarstva_ibfk_1` FOREIGN KEY (`id_zadruge`) REFERENCES `zadruge` (`id`);
+ALTER TABLE `korisnici`
+  ADD CONSTRAINT `korisnici_ibfk_1` FOREIGN KEY (`id_zadruge`) REFERENCES `zadruge` (`id`);
 
 --
 -- Constraints for table `mljekomati`
 --
 ALTER TABLE `mljekomati`
-  ADD CONSTRAINT `mljekomati_ibfk_1` FOREIGN KEY (`id_korisnika`) REFERENCES `gospodarstva` (`id`);
+  ADD CONSTRAINT `mljekomati_ibfk_1` FOREIGN KEY (`id_korisnika`) REFERENCES `korisnici` (`id`);
 
 --
 -- Constraints for table `oranice`
 --
 ALTER TABLE `oranice`
-  ADD CONSTRAINT `oranice_ibfk_1` FOREIGN KEY (`id_parcele`) REFERENCES `parcele` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `oranice_ibfk_2` FOREIGN KEY (`stanje_tla`) REFERENCES `stanja_tla` (`id`),
-  ADD CONSTRAINT `oranice_ibfk_3` FOREIGN KEY (`vrsta_tla`) REFERENCES `vrste_tla` (`id`);
+  ADD CONSTRAINT `oranice_ibfk_1` FOREIGN KEY (`id_parcele`) REFERENCES `parcele` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `parcele`
 --
 ALTER TABLE `parcele`
-  ADD CONSTRAINT `parcele_ibfk_1` FOREIGN KEY (`id_korisnika`) REFERENCES `gospodarstva` (`id`),
+  ADD CONSTRAINT `parcele_ibfk_1` FOREIGN KEY (`id_korisnika`) REFERENCES `korisnici` (`id`),
   ADD CONSTRAINT `parcele_ibfk_2` FOREIGN KEY (`id_grada`) REFERENCES `gradovi` (`id`);
 
 --
@@ -758,8 +684,7 @@ ALTER TABLE `radnje_stroja`
 --
 ALTER TABLE `sadnje`
   ADD CONSTRAINT `sadnje_ibfk_1` FOREIGN KEY (`id_oranice`) REFERENCES `oranice` (`id`),
-  ADD CONSTRAINT `sadnje_ibfk_2` FOREIGN KEY (`biljka`) REFERENCES `biljke` (`id`),
-  ADD CONSTRAINT `sadnje_ibfk_3` FOREIGN KEY (`sezona`) REFERENCES `sezone` (`id`);
+  ADD CONSTRAINT `sadnje_ibfk_2` FOREIGN KEY (`biljka`) REFERENCES `biljke` (`id`);
 
 --
 -- Constraints for table `servisi_mljekomata`
